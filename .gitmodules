@@ -1,0 +1,9 @@
+[submodule "microservicios"]
+	path = microservicios
+	url = https://github.com/salaverryyy/microservicios.git
+[submodule "api-factura"]
+	path = api-factura
+	url = https://github.com/GFCOR/api-factura.git
+[submodule "Api_user"]
+	path = Api_user
+	url = https://github.com/JhonChilo/Api_user
