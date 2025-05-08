@@ -40,8 +40,6 @@ services:
     ports:
       - "8002:8002"
     restart: always
-    depends_on:
-      - mongodb
     environment:
       MONGO_URI: "mongodb://admin:72942250@35.169.164.120:8006/?authSource=admin"
     networks:
