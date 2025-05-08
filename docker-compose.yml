@@ -22,7 +22,7 @@ services:
       context: ./Api_user
       dockerfile: Dockerfile
     ports:
-      - "8003:8003"
+      - "8000:8000"
     environment:
       FLASK_ENV: production
       DB_HOST: 172.31.16.52
