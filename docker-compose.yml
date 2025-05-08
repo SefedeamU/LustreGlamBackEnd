@@ -47,19 +47,6 @@ services:
     networks:
       - internal_network
 
-  mongodb:
-    container_name: mongodb
-    image: mongo:6.0
-    ports:
-      - "8006:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: 72942250
-    volumes:
-      - ./api-factura/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-    networks:
-      - internal_network
-
 networks:
   internal_network:
     external: true
