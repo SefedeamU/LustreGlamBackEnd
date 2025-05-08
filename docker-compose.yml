@@ -1,0 +1,65 @@
+services:
+  api-productos:
+    container_name: api-productos
+    build:
+      context: ./microservicios/api_productos
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      DB_HOST: 35.169.164.120
+      DB_PORT: 8004
+      DB_NAME: bd_productos
+      DB_USERNAME: root
+      DB_PASSWORD: 72942250
+    networks:
+      - internal_network
+
+  api-usuarios:
+    container_name: api-usuarios
+    build:
+      context: ./Api_user
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8003"
+    environment:
+      FLASK_ENV: production
+      DB_HOST: 35.169.164.120
+      DB_PORT: 8005
+      DB_NAME: bd_usuarios
+      DB_USERNAME: root
+      DB_PASSWORD: 72942250
+    networks:
+      - internal_network
+
+  api-factura:
+    container_name: api-factura
+    build:
+      context: ./api-factura
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    restart: always
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: "mongodb://admin:72942250@35.169.164.120:8006/?authSource=admin"
+    networks:
+      - internal_network
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:6.0
+    ports:
+      - "8006:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 72942250
+    volumes:
+      - ./api-factura/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - internal_network
+
+networks:
+  internal_network:
+    external: true
