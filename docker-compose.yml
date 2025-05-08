@@ -12,6 +12,7 @@ services:
       DB_NAME: bd_productos
       DB_USERNAME: root
       DB_PASSWORD: 72942250
+    restart: always
     networks:
       - internal_network
 
@@ -29,6 +30,7 @@ services:
       DB_NAME: bd_usuarios
       DB_USERNAME: root
       DB_PASSWORD: 72942250
+    restart: always
     networks:
       - internal_network
 
@@ -41,7 +43,8 @@ services:
       - "8002:8002"
     restart: always
     environment:
-      MONGO_URI: "mongodb://admin:72942250@35.169.164.120:8006/?authSource=admin"
+      MONGO_URI: "mongodb://admin:72942250@172.31.16.52:8006/?authSource=admin"
+    restart: always
     networks:
       - internal_network
 
