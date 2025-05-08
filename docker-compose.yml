@@ -4,8 +4,6 @@ services:
     build:
       context: ./microservicios/api_productos
       dockerfile: Dockerfile
-      cache_from:
-        - api-productos:latest
     ports:
       - "8001:8001"
     environment:
@@ -22,8 +20,6 @@ services:
     build:
       context: ./Api_user
       dockerfile: Dockerfile
-      cache_from:
-        - api-usuarios:latest
     ports:
       - "8003:8003"
     environment:
@@ -41,8 +37,6 @@ services:
     build:
       context: ./api-factura
       dockerfile: Dockerfile
-      cache_from:
-        - api-factura:latest
     ports:
       - "8002:8002"
     restart: always
