@@ -44,6 +44,8 @@ services:
     environment:
       MONGO_URI: "mongodb://admin:72942250@172.31.16.52:8006/?authSource=admin"
     restart: unless-stopped
+    depends_on:
+      - api-usuarios
     networks:
       - internal_network
 
